@@ -10,7 +10,8 @@ class EvenementController {
 
 
     function response( $status ) {
-        header("Access-Control-Allow-Origin: http://localhost:3000");
+        //header("Access-Control-Allow-Origin: http://localhost:3000");
+        header("Access-Control-Allow-Origin: http://localhost:4200");
         header("Access-Control-Allow-Headers: Content-type");
         header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
         header("Content-type: application/json");
@@ -116,6 +117,25 @@ class EvenementController {
 
         $this->response( $status );
 
+    }
+
+    function getAllEventsByCatId($id) {
+
+        $eventRepository = RM::getInstance()->getEvenementRepository();
+        $events = $eventRepository->getEventsCatId($id);
+
+        $success = false;
+        if ($events) {
+            $success = true;
+        }
+
+        $status = [
+            "success" => $success,
+            "evenements" => $events
+        ];
+
+        return $this->response($status);
+    
     }
 
 }

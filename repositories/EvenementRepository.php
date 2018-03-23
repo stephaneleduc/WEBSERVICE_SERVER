@@ -135,6 +135,30 @@ class EvenementRepository extends Repository {
         return $evenement;
 
     }
+
+    function getEventsCatId($id) {
+
+        $sql="SELECT * FROM evenements
+              WHERE id_categorie = :id";
+
+        $statement = $this->pdo->prepare ($sql);
+        $result = $statement->execute([
+            "id" => $id
+        ]);
+
+        $events = [];
+        if ($result) {
+
+            $datas = $statement->fetchAll();
+            foreach ($datas as $data ) {
+
+                $events[] = new Evenement($data);
+
+            }
+        }
+
+        return $events;
+    }
 }
 
 

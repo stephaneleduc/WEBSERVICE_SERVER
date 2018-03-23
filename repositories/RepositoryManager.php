@@ -25,6 +25,7 @@ class RepositoryManager {
         $this->evenementRepository = new EvenementRepository ( $pdo );
         $this->categoryRepository = new CategoryRepository ( $pdo );
         $this->userRepository = new UserRepository ( $pdo );
+        $this->gestionRepository = new GestionRepository ( $pdo);
     }
 
     public function getEvenementRepository() {

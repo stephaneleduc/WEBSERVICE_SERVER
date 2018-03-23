@@ -28,15 +28,17 @@ class GestionRepository extends Repository {
 
     }
 
-    function deleteEventUser( $id ) {
+    function deleteEventUser( $id_user, $id_event ) {
 
         $sql = "DELETE FROM link_user_evenement
-                WHERE      id = :id";
+                WHERE      id_user = :id_user
+                AND        id_evenement = :id_event";
 
         $statement = $this->pdo->prepare ($sql);
         $statement->execute([
 
-            "id" => $id
+            "id_user" => $id_user,
+            "id_event" =>  $id_event
      
         ]);
 

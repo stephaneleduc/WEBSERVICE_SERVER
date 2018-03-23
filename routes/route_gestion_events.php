@@ -8,7 +8,7 @@ $controller = new GestionController();
 Flight::route("POST /eventuser", [$controller, "addEventUser"]);
 
 //DELETE EVENT FOR USER
-Flight::route("DELETE /eventuser/@id", [$controller, "deleteEventUSer"]);
+Flight::route("DELETE /eventuser/@id_user/@id_event", [$controller, "deleteEventUser"]);
 
 //GET EVENTS BY USER
 Flight::route("GET /alleventsuser/@id", [$controller, "GetEventsByUserId"]);

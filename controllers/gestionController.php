@@ -40,15 +40,15 @@ class GestionController {
     }
 
 
-    function deleteEventUser( $id ) {
+    function deleteEventUser( $id_user, $id_event ) {
 
         $gestionRepository = RM::getInstance()->getGestionRepository();
-        $success = $gestionRepository->deleteEventUser( $id );
+        $success = $gestionRepository->deleteEventUser( $id_user, $id_event );
 
         $status = [
 
             "success" => $success,
-            "message" => "Le lien " . $id . " a bien été supprimé !"
+            "message" => "L'utilisateur ". $id_user . " ne particpe plus à l'événement ". $id_event
         ];
 
         $this->response ($status);
